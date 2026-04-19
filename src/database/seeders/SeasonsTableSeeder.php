@@ -12,7 +12,7 @@ class SeasonsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $seasons = [
             ['name' => '春'],
