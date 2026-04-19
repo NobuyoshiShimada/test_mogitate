@@ -35,6 +35,11 @@
                     <p class="product-content__items--item--price">{{ $product->price }}</p>
                 </div>
             @endforeach
+
+            <!-- ページネーションのリンクを表示 -->
+            <div class="pageination">
+                {{ $products->links()}}
+            </div>
         </div>
     </div>
 @endsection
