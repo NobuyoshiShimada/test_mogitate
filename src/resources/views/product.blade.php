@@ -25,17 +25,16 @@
     </div>
     </div>
     <div class="product-content">
-        <form class="protect-content__form">
-            @csrf
-            <button class="product-content__form__button" action="/products/register">＋商品を追加</button>
+        <form class="protect-content__add">
+            <a href="{{ route('products.create') }}" class="product-content__form__button">＋商品を追加</a>
         </form>
         <div class="product-content__items">
             @foreach ($products as $product)
-                <div class="product-content__items--item">
+                <a href="{{ route('products.show', $product->id) }}" class="product-content__items--item">
                     <img class="product-content__items--item--img" src="{{ asset($product->image_path) }}" alt="商品画像">
                     <h3 class="product-content__items--item--name">{{ $product->name }}</h3>
                     <p class="product-content__items--item--price">{{ $product->price }}</p>
-                </div>
+                </a>
             @endforeach
 
             <!-- ページネーションのリンクを表示 -->

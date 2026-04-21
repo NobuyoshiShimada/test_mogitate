@@ -8,6 +8,7 @@ use App\Models\Season;
 
 class ProductController extends Controller
 {
+    // 商品一覧
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -33,9 +34,31 @@ class ProductController extends Controller
 
          $products = Product::paginate(6);
         return view('product', compact('products'));
-
     }
 
+    //商品詳細
+    public function show($productID)
+    {
+        $product = Product::with('seasons')->findOrFail($productID);
+        $seasons = Season::all();
+
+        return view('detail', compact('product', 'seasons'));
+    }
+
+    // 商品の更新
+    public function update(Request $request, $id)
+    {
+        return redirect()->route('products.index');
+    }
+
+    // 商品の削除
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index');
+    }
 
 
 }
