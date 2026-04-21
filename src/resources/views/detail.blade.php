@@ -22,17 +22,28 @@
                         <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
                     </div>
                     <input type="file" name="image" class="image-upload">
+                    @error('image')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="product-detail__info-section">
                 <div class="product-detail__name">
                     <label>商品名</label>
                     <input type="text" name="name" value="{{ old('name', $product->name) }}" placeholder="商品名を入力">
+                    @error('name')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+
                 </div>
 
                 <div class="product-detail__price">
                     <label>値段</label>
                     <input type="text" name="price" value="{{ old('price', $product->price) }}" placeholder="値段を入力">
+                    @error('price')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
+
                 </div>
 
                 <div class="product-detail__season">
@@ -45,6 +56,10 @@
                                 {{ $season->name }}
                             </label>
                         @endforeach
+                        @error('seasons')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+
                     </div>
 
                 </div>
@@ -52,6 +67,10 @@
             <div class="product-detail__description">
                 <label>商品説明</label>
                 <textarea name="description" rows="5">{{ old('description', $product->description) }}</textarea>
+                @error('description')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+
             </div>
 
             <div class="product-detail__actions">

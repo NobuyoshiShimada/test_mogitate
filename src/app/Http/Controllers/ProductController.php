@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
+use App\Http\Requests\DetailRequest;
 
 class ProductController extends Controller
 {
@@ -46,9 +47,24 @@ class ProductController extends Controller
     }
 
     // 商品の更新
-    public function update(Request $request, $id)
+    public function update(DetailRequest $request, $id)
     {
-        return redirect()->route('products.index');
+        $product = Product::findOrFail($id);
+
+        $updateData = $request->only(['name', 'price', 'description']);
+
+        if ($request->hasfile('image'))
+            {
+                $path = $request->file('image')->store('images', 'public');
+
+                $updateData['image_path'] = 'storage/' . $path;
+            }
+
+            $product->update($updateData);
+
+            $product->seasons()->sync($request->seasons);
+
+        return redirect()->route('products.index')->with('success', '商品を更新しました');
     }
 
     // 商品の削除
