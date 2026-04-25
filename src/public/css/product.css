@@ -61,6 +61,41 @@ body {
     color: #888;
 }
 
+.sort-modal {
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 6px 12px;
+    border: 1px solid #FFD700;
+    border-radius: 20px;
+    box-shadow: o 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    gap: 8px;
+}
+
+.sort-modal__text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.sort-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: #f8f8f8;
+    color: #FFD700;
+    border: 1px solid #FFD700;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 1;
+    transition: all 0.2s;
+}
+
 .product-content__main {
     flex-grow: 1;
     min-width: 0;
@@ -76,7 +111,7 @@ body {
     background-color: #ff9d00;
     padding: 10px 20px;
     text-decoration: none;
-    color: #fff;
+    color: #333;
     font-size: 14px;
     font-weight: bold;
     border-radius: 4px;

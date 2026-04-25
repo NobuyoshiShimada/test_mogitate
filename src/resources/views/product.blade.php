@@ -25,6 +25,17 @@
                         </select>
                     </div>
                 </form>
+
+                @if (request('sort'))
+                <div class="sort-modal">
+                    <span class="sort-modal__text">
+                        {{ request('sort') == 'price_low' ? '高い順に表示' : '低い順に表示' }}
+                    </span>
+                    <a href="{{ request()->fullUrlWithQuery(['sort' => null]) }}" class="sort-modal__close">×
+                    </a>
+                </div>
+                @endif
+
             </div>
         </div>
         <div class="product-content__main">

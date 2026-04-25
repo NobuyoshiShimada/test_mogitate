@@ -40,6 +40,7 @@ class RegisterRequest extends FormRequest
             'price.integer' => '数値で入力してください',
             'price.max' => '0~10000円以内で入力してください',
             'image.required' => '画像を登録してください',
+            'image.image' => '画像を登録してください',
             'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
             'seasons.required' => '季節を選択してください',
             'description.required' => '商品説明を入力してください',
