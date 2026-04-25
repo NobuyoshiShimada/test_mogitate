@@ -57,7 +57,7 @@
 
             <!-- ページネーションのリンクを表示 -->
             <div class="pagination">
-                {{ $products->links() }}
+                {{ $products->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

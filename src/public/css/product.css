@@ -167,45 +167,33 @@ body {
     justify-content: center;
 }
 
-.pagination nav div:first-child {
-    display: none;
-}
-
-.pagination nav div:last-child {
+.pagination ul {
     display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
     gap: 8px;
-    align-items: center;
 }
 
-.pagination nav div:last-child span,
-.pagination nav div:last-child a {
+.pagination .page-item .page-link,
+.pagination .page-item span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #e0e0e0;
     text-decoration: none;
     font-size: 14px;
-    color: #333;
-    border: none;
-    background: transparent;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
 }
 
-.pagination nav div:last-child span[aria-current="page"] span,
-.pagination nav div:last-child span[aria-current="page"] {
-    background-color: #FFD700 !important;
-    color: #fff !important;
+.pagination .page-item.active span {
+    background-color: #FFD700;
+    border-color: #FFD700;
     font-weight: bold;
+    cursor: default;
 }
-
-.pagination nav div:last-child a:hover {
-    background-color: #f0f0f0;
-}
-
-.pagination svg {
-    width: 18px;
-    height: 18px;
-}
- 
