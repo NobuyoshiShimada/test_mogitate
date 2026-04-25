@@ -69,7 +69,7 @@ body {
     padding: 6px 12px;
     border: 1px solid #FFD700;
     border-radius: 20px;
-    box-shadow: o 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     gap: 8px;
 }
@@ -208,4 +208,4 @@ body {
     width: 18px;
     height: 18px;
 }
-
+ 

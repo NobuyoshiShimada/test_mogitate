@@ -54,5 +54,5 @@ php artisan db:seed
 ![alt](test_mogitate_er.png)
 
 ## URL
-- 開発環境：http://localhost/
+- 開発環境：http://localhost/products
 - phpMyAdmin:：http://localhost:8080/
