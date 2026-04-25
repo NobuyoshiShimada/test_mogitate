@@ -2,8 +2,9 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
 @endsection
-
 @section('content')
     <div class="product-detail">
         <nav class="breadcrumb">
@@ -16,7 +17,6 @@
             @method('PATCH')
 
             <div class="product-detail__main">
-
                 <div class="product-detail__image-section">
                     <div class="image-preview">
                         <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
@@ -26,47 +26,49 @@
                         <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
-            </div>
-            <div class="product-detail__info-section">
-                <div class="product-detail__name">
-                    <label>商品名</label>
-                    <input type="text" name="name" value="{{ old('name', $product->name) }}" placeholder="商品名を入力">
-                    @error('name')
-                        <p class="error-message">{{ $message }}</p>
-                    @enderror
-
-                </div>
-
-                <div class="product-detail__price">
-                    <label>値段</label>
-                    <input type="text" name="price" value="{{ old('price', $product->price) }}" placeholder="値段を入力">
-                    @error('price')
-                        <p class="error-message">{{ $message }}</p>
-                    @enderror
-
-                </div>
-
-                <div class="product-detail__season">
-                    <label>季節</label>
-                    <div class="checkbox-group">
-                        @foreach ($seasons as $season)
-                            <label>
-                                <input type="checkbox" name="seasons[]" value="{{ $season->id }}"
-                                    {{ $product->seasons->contains($season->id) ? 'checked' : '' }}>
-                                {{ $season->name }}
-                            </label>
-                        @endforeach
-                        @error('seasons')
+                <div class="product-detail__info-section">
+                    <div class="product-detail__name">
+                        <label>商品名</label>
+                        <input type="text" name="name" value="{{ old('name', $product->name) }}" placeholder="商品名を入力">
+                        @error('name')
                             <p class="error-message">{{ $message }}</p>
                         @enderror
 
                     </div>
 
+                    <div class="product-detail__price">
+                        <label>値段</label>
+                        <input type="text" name="price" value="{{ old('price', $product->price) }}"
+                            placeholder="値段を入力">
+                        @error('price')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
+
+                    </div>
+
+                    <div class="product-detail__season">
+                        <label>季節</label>
+                        <div class="checkbox-group">
+                            @foreach ($seasons as $season)
+                                <input type="checkbox" name="seasons[]" value="{{ $season->id }}"
+                                    id="season-{{ $season->id }}" class="checkbox-input"
+                                    {{ (is_array(old('seasons')) && in_array($season->id, old('seasons'))) || (isset($product) && $product->seasons->contains($season->id)) ? 'checked' : '' }}>
+                                <label for="season-{{ $season->id }}" class="checkbox-label">
+                                    {{ $season->name }}
+                                </label>
+                            @endforeach
+                            @error('seasons')
+                                <p class="error-message">{{ $message }}</p>
+                            @enderror
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="product-detail__description">
                 <label>商品説明</label>
-                <textarea name="description" rows="5">{{ old('description', $product->description) }}</textarea>
+                <textarea name="description" rows="12">{{ old('description', $product->description) }}</textarea>
                 @error('description')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
@@ -83,8 +85,9 @@
             @csrf
             @method('DELETE')
             <button class="button-delete" type="submit" onclick="return confirm('本当に削除しますか？')">
-                <i class="fas fa-trash"></i>
-            </button>
+                <span class="material-symbols-outlined">
+                    delete
+                </span> </button>
         </form>
     </div>
 @endsection

@@ -5,11 +5,10 @@
 @endsection
 
 @section('content')
-    <div class="product-register">
-        <h2 class="product-register__title">商品登録</h2>
+    <div class="register">
+        <h2 class="register__title">商品登録</h2>
 
-        <form class="product-register__form" action="{{ route('products.store') }}" method="POST"
-            enctype="multipart/form-data">
+        <form class="register__form" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- 商品名 --}}
@@ -41,12 +40,14 @@
 
             {{-- 季節 --}}
             <div class="register__form-group">
-                <label>季節<span class="label-required">必須</span><span class="label-note">複数選択可</span></label>
+                <label>季節<span class="label-required">必須</span>
+                    <span class="label-note">複数選択可</span></label>
                 <div class="checkbox-group">
                     @foreach ($seasons as $season)
-                        <label>
-                            <input type="checkbox" name="seasons[]" value="{{ $season->id }}"
-                                {{ is_array(old('seasons')) && in_array($season->id, old('seasons')) ? 'checked' : '' }}">
+                        <input type="checkbox" name="seasons[]" value="{{ $season->id }}" id="season-{{ $season->id }}"
+                            class="checkbox-input"
+                            {{ (is_array(old('seasons')) && in_array($season->id, old('seasons'))) || (isset($product) && $product->seasons->contains($season->id)) ? 'checked' : '' }}>
+                        <label for="season-{{ $season->id }}" class="checkbox-label">
                             {{ $season->name }}
                         </label>
                     @endforeach
